@@ -10,11 +10,5 @@ def solve_forloop(n):
         f_1, f_2 = f_2, f_1 + f_2
     return sum
 
-def solve_matrix(n):
-    f_1 = 1
-    f_2 = 1
-    #TODO: find markov chain matrix that sums even fibonanci
-    mkv_mat = np.mat([])
-
 if __name__ == '__main__':
     print(solve_forloop(4000000))
