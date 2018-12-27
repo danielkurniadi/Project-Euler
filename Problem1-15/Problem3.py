@@ -5,7 +5,7 @@ import math
 def solve(n):
     upper_bound = int(math.sqrt(n))+1
     for i in range(upper_bound, 1, -1):
-        if (n%i ==0) and np.all(checkPrime(i)):
+        if (n%i ==0) and checkPrime(i):
             return i
     
 def checkPrime(n):
@@ -14,7 +14,7 @@ def checkPrime(n):
     if n==4:
         return False
     upper_bound = int(math.sqrt(n))+1
-    return np.all(1* (n% np.arange(2, upper_bound) !=0))
+    return (1* (n% np.arange(2, upper_bound) !=0))
 
 def test_solution(n, func): 
     x = func(n)
