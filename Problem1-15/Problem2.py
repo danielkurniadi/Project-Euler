@@ -1,5 +1,4 @@
-import numpy as np
-
+import math
 def solve_forloop(n):
     f_1 = 1
     f_2 = 1
