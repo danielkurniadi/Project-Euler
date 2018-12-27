@@ -15,14 +15,17 @@ def main(a, b):
         2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
         What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
     """
-    if a==1:
+    if a==1:     # To avoid divide by zero at np.log
         a = 2
+    # Lists all prime numbers in [a, b]
     v_divisors = np.arange(a, b+1)
     v_primes = np.array([x for x in v_divisors if checkPrime(x)])
+    # Smallest exponent for each prime numbers that is needed to make smallest divisible number of 1 to 20
     v_exponents = np.floor(np.log(b)/np.log(v_primes))
     result_factors = np.power(v_primes, v_exponents)
+    # Calculate the smallest divisible number as result
     result = np.prod(result_factors)
-    print(result)
+    print(result) 
 
 if __name__ == '__main__':
     a = 1 #from 1
