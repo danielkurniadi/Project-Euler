@@ -1,14 +1,14 @@
 def nth_prime(n):
     count = 2
     i = 3
-    while i:
+    while i: #brute force through
         k = 1
-        while k*k < i:
+        while k*k < i: #check prime
             k+= 2
-            if i%k==0:
+            if i%k==0: #number with divisor is not a prime
                 break
         else:
-            count+= 1
+            count+= 1 
             if count== n:
                 return i
         i+= 2
