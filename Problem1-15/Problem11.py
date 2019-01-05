@@ -5,8 +5,8 @@ def sliding_Window(Mat, f_size, func):
     maxmat = np.zeros((f_size,f_size))
     m, n = Mat.shape #rows, cols
     mm, nn = m-f_size+1, n-f_size+1 #bounds
-    for j in range(0, mm, f_size):
-        for i in range(0, nn, f_size):
+    for j in range(0, mm):
+        for i in range(0, nn):
             mat = (Mat[j:j+f_size, i:i+f_size])
             x = func(mat) #apply callbacks function
             if x > maxprod:
@@ -15,7 +15,6 @@ def sliding_Window(Mat, f_size, func):
     return maxprod, maxmat
 
 def apply2dMaxProd(mat):
-    print("mat:\n", mat)
     maxprod = 1
     m, n = mat.shape
     #horizontals prod
@@ -39,14 +38,29 @@ def apply2dMaxProd(mat):
     
     return maxprod
 
-if __name__ == "__main__":
-    np.random.seed(42)
-    Mat = np.random.randint(10, 90, size=(10,10))
+def read_file_toMat(infile):
+    def cleanData(numstr):
+        if numstr[0]=='0':
+            return int(numstr[1])
+        else:
+            return int(numstr)
+
+    with open(infile, 'r') as fh:
+        data = [list(map(lambda numstr: cleanData(numstr),
+                 line.split(' '))) for line in fh.read().split('\n')]
+        return np.matrix(data, dtype='int')
+
+def main(filepath):
+    Mat = read_file_toMat(filepath)
     maxprod, mat = sliding_Window(Mat, 4, apply2dMaxProd)
 
-    print("maxprod:", maxprod)
+    print("maxprod:", maxprod) #answer: 70600674
     print("maxmat:\n", mat)
     print("matric:\n", Mat)
+
+if __name__ == "__main__":
+    filepath = 'matrix_p11.txt'
+    main(filepath)
 
 
     
