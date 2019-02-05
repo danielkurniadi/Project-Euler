@@ -71,7 +71,8 @@ class BruteSolution(BaseSolution):
 
 if __name__ == '__main__':
     brute_solver = BruteSolution()
-    # brute_solver.solve_shortcut() #type in the inputs
+    brute_solver.solve_shortcut() #type in the inputs
+    
     numbers = [
         37107287533902102798797998220837590246510135740250,
         46376937677490009712648124896970078050417018260538,
